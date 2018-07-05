@@ -1,0 +1,6 @@
+./*.gif
+./*.png
+./*.jpg
+./main.rb
+./views
+./views/*
