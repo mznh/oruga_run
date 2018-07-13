@@ -50,20 +50,13 @@ def make_oruga face_path
 
   time = Time.now
   tmp_name = Digest::MD5.hexdigest(time.iso8601(6))
-  p tmp_name
 
-  p "ho"
-  cmd = "convert -layers optimize -delay 5 -loop 0 output*.png #{tmp_name}.gif"
-  system cmd
-  p "ho"
-  cmd = "rm output*"
-  system cmd
-  p "ho"
+  system "convert -layers optimize -delay 5 -loop 0 output*.png #{tmp_name}.gif"
+  system "rm output*"
   new_name = Digest::MD5.file("#{tmp_name}.gif").to_s+".gif"
-  cmd = "mv #{tmp_name}.gif #{new_name}"
-  system cmd
-  p "ho"
+  system "mv #{tmp_name}.gif #{new_name}"
+  puts "make #{new_name}"
+  return new_name
 end
-
 
 make_oruga ARGV[0]
